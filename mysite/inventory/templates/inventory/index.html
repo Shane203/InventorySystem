@@ -1,0 +1,41 @@
+<h1>Inventory System</h1>
+<ul>
+	<li>
+		<a href="{% url 'inventory:modify' %}">Modify Inventory</a>
+	</li>
+	<br>
+	<li>
+		<form action="{% url 'inventory:category' %}" method="post">
+		{% csrf_token %}
+		Get all items for a given category:<br>
+			<select name="category">
+				<option value="none" selected disabled hidden>Select a category</option>
+				{% for category in categories %}
+				<option value="{{ category }}">{{ category }}</option>
+				{% endfor %}
+			</select>
+			<input type="submit" value="Submit">
+		</form>
+	</li>
+	<br>
+	<li>
+		<form action="{% url 'inventory:range' %}" method="get">
+		{% csrf_token %}
+		Get all items for a given price range:<br>
+			Lower Limit: <input type="number" name="gt" min="0", step=".01">
+			>
+			Upper Limit: <input type="number" name="lt" min="0", step=".01">
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+	</li>
+	<br>
+	<li>
+		<a href="{% url 'inventory:recent' %}">Get 5 most recent additions</a>
+	</li>
+	<br>
+	<li>
+		<a href="{% url 'inventory:duetoexpire' %}">Get all items due to expire in 2 days or less</a>
+	</li>
+</ul>
+	

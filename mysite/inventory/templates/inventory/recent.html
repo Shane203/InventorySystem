@@ -1,0 +1,10 @@
+{% if recent_additions %}
+	<h1>Recent additions</h1>
+    <ul>
+    {% for item in recent_additions %}
+        <li><a href="{% url 'inventory:detail' item.id %}">{{ item.name }} - ID:{{ item.id }}</a> - Date Added: {{ item.date_time_added }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}

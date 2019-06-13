@@ -1,0 +1,10 @@
+{% if expiring %}
+	<h1>All items expiring in the next 2 days or already expired</h1>
+	<ul>
+	{% for item in expiring %}
+		<li><a href="{% url 'inventory:detail' item.id %}">{{ item.name }} ID:{{ item.id }}</a> - Expiry date: {{ item.expiry_date }}</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No items are due to expire in the next 2 days</p>
+{% endif %}

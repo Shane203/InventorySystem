@@ -1,0 +1,57 @@
+<h1>Modify Inventory</h1>
+<ul>
+	<li>
+		<form action="{% url 'inventory:add' %}" method="post">
+		{% csrf_token %}
+		Add new inventory item:<br>
+			<label for="name">Name:</label>
+			<input type="text" name="name"><br>
+			<label for="price">Price:</label>
+			<input type="number" name="price" min="0", step=".01"><br>
+			<label for="category">Category:</label>
+			<input type="text" name="category"><br>
+			<label for="expiry">Expiry Date:</label>
+			<input type="date" name="expiry" value=""><br>
+			<input type="submit" value="Add">
+		</form>
+	</li>
+	<br>
+	<li>
+		<form action="{% url 'inventory:delete' %}" method="post">
+		{% csrf_token %}
+		Delete item from inventory:<br>
+			<select name="todelete" multiple>
+				<option value="1" selected disabled hidden>Select an item to delete</option>
+				{% for item in items %}
+				<option value="{{ item.pk }}">{{ item.name }} - ID:{{ item.id }}</option>
+				{% endfor %}
+			</select><br>
+			<input type="submit" value="Delete">
+		</form>
+	</li>
+	<br>
+	<li>
+		<form action="{% url 'inventory:update' %}" method="post">
+		{% csrf_token %}
+		Update item in inventory:<br>
+			<select name="toupdate">
+				<option value="none" selected disabled hidden>Select an item to update</option>
+				{% for item in items %}
+				<option value="{{ item.pk }}">{{ item.name }} - ID:{{ item.id }}</option>
+				{% endfor %}
+			</select><br><br>
+			Leave a field blank to not change it:<br>
+			<label for="name">Name:</label>
+			<input type="text" name="name"><br>
+			<label for="price">Price:</label>
+			<input type="number" name="price" min="0", step=".01"><br>
+			<label for="category">Category:</label>
+			<input type="text" name="category"><br>
+			<label for="expiry">Expiry Date:</label>
+			<input type="date" name="expiry" value=""><br>
+			<input type="submit" value="Update">
+		</form>
+	</li>
+</ul>
+			
+		
