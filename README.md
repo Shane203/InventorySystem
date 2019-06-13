@@ -5,7 +5,7 @@
 To run the project:
 
 Download the repo.<br/>
-In a command prompt, cd to the mysite directory.<br/>
+In a command prompt, cd to the OUTER mysite directory.<br/>
 Execute '$ python manage.py runserver'.<br/>
 Finally, in your browser go to 'http://localhost:8000/inventory/'<br/>
 
